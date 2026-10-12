@@ -7,3 +7,5 @@ Checks if a user has registered Platform Single Sign-on
 - Reports token status (Good or Bad)
 
 A "Bad" token status is reported if tokens are either not present or have expired.
+
+![PSSO status in Jamf Pro](hhttps://raw.githubusercontent.com/howieisaacks/Images/main/PSSO-Status.png)
