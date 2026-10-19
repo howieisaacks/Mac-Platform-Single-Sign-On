@@ -1,6 +1,6 @@
 # Platform Single Sign-on Migrate to Secure Enclave
 
-Prompt users to upgrade their Platform Single Sign-on registration from password sync login type to Secure Enclave
+Prompt users to upgrade their Platform Single Sign-on registration from password sync login type to Secure Enclave. All Swift Dialog functions in this script use the "nogradient" option. Swift Dialog version 3.1 is required for this.
 
 To make this script work in your environment:
 - Add your own Jamf Pro server URL - line 60
@@ -11,6 +11,7 @@ To make this script work in your environment:
 - You may want to edit the help message in the initial prompt - line 483
 - This script checks for the PSSO Secure Enclave profile install success using the profile's ID. Add your profile ID - line 297
 - This script checks for a profile that grants Jamf permission to run automation tasks in macOS which is needed for the "quit_app" function. Add your profile ID - line 156
+- Modify "dialog_check" function. Add your Jamf Pro policy custom trigger for installing Swift Dialog.
 
 READ THE SCRIPT TO FIND OTHER AREAS THAT YOU MAY NEED TO CHANGE. I MAY NOT HAVE MENTIONED ALL OF THEM HERE.
 
