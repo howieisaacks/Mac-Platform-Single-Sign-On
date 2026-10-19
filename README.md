@@ -18,6 +18,8 @@ READ THE SCRIPT TO FIND OTHER AREAS THAT YOU MAY NEED TO CHANGE. I MAY NOT HAVE 
 This script uses Swift Dialog to prompt users to change their PSSO registration from using password sync to Secure Enclave. As the user is following the process, a function monitors the process until successful registration.
 To swap the PSSO configuration profiles, the Jamf Pro API is used to add the computer to a static group scoped to receive the PSSO Secure Enclave profile. This static group should be setup to be excluded from the PSSO password sync profile. This triggers the immediate uninstall of the password sync profile and installs the Secure Enclave profile.
 
+If there is no PSSO registration, the script will handle getting the user to register PSSO with Secure Enclave.
+
 For the "passkey_auth" function, add the custom trigger for a policy to enable Company Portal to autofill passkeys. Users are likely to ignore the prompt to do this. Scott Kendall has written a script that automates enabling passkey autofill.
 
 https://github.com/ScottEKendall/Microsoft-Platform-SSO/blob/main/scripts/Enforce%20Portal%20AutoFill.sh
