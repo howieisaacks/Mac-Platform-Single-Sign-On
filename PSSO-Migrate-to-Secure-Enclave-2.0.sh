@@ -171,7 +171,7 @@ check_for_jamf_profile() {
 dialog_check() {
 	if [[ ! -e "$dialog_bin" ]]; then
 		echo "Swift Dialog is not installed. Installing."
-		jamfPolicy "install-swiftdialog"
+		jamfPolicy "POLICY_CUSTOM_TRIGGER"
 	fi
 }
 
