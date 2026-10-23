@@ -24,7 +24,7 @@ currentUser_id=$(/usr/bin/id -u "$currentUser" 2>/dev/null)
 # ----------------------------------
 runAsUser() {
 	if [[ "$currentUser" != "loginwindow" ]] && [[ -n "$currentUser" ]]; then
-		/bin/launchctl asuser "$currentUser_id" sudo -u "$currentUser" "$@"
+		/bin/launchctl asuser "$currentUser_id" sudo -u "$currentUser" -H "$@"
 	fi
 }
 
