@@ -190,7 +190,7 @@ check_logged_in_user() {
 #-----------------------------------------
 runAsUser() {
 	if [[ "$currentUser" != "loginwindow" ]] && [[ -n "$currentUser" ]]; then
-		/bin/launchctl asuser "$currentUser_id" sudo -u "$currentUser" "$@"
+		/bin/launchctl asuser "$currentUser_id" sudo -u "$currentUser" -H "$@"
 	fi
 }
 
