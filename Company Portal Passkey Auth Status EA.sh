@@ -12,7 +12,8 @@ with Platform Single Sign-on using Secure Enclave login type.
 Created with help from Scott Kendall
 https://github.com/ScottEKendall/Microsoft-Platform-SSO/blob/main/scripts/Enforce%20Portal%20AutoFill.sh
 
-10/15/2026 | Howie Canterbury
+11/2/2026 | Howie Canterbury
+Simplified passkey_auth_status function to use return codes.
 ----------------------------------------
 EXTENSION_ATTRIBUTE
 
@@ -55,13 +56,13 @@ passkey_auth_status() {
 	cp_autofill=$(runAsUser pluginkit -m | grep "com.microsoft.CompanyPortalMac.ssoextension" | awk '{print $1}')
 	
 	if [[ "$cp_ssoext" == "+" ]] && [[ "$cp_autofill" == "+" ]]; then
-		echo "1"
+		return 0
 	else
-		echo "0"
+		return 1
 	fi
 }
 
-# MAIN FUNCTION
+# REPORT STATUS
 # ----------------------------------
 main () {
 	# Check PSSO login type. Exit if not Secure Enclave
@@ -70,18 +71,11 @@ main () {
 	fi
 	
 	# Report passkey auth status
-	passkey_auth_status > /dev/null
-		case "$(passkey_auth_status)" in
-			1)
-				echo "<result>Yes</result>"
-			;;
-			0)
-				echo "<result>No</result>"
-			;;
-			*)
-				echo "<result>No</result>"
-			;;
-		esac
+	if passkey_auth_status; then
+		print "<result>Yes</result>"
+	else
+		print "<result>No</result>"
+	fi
 }
 
 # RUN
